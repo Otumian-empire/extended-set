@@ -1,5 +1,5 @@
 # Extended Set
-This is an extension of the `set class` with additional methods for *set cardinality, cartesian product, power set, etc*. As an extension for the set class it is meant to work fine as a set.
+This is an extension of the set class with additional methods for set cardinality, cartesian product, power set, etc. As an extension for the set class it is meant to work fine as a set.
 
 # Classes
 1. SetX
