@@ -1,4 +1,4 @@
-class setx:
+class Setx:
 
     def __init__(self, iterable, size):
         self.size = size
