@@ -24,6 +24,7 @@ This is an extension of the set class with additional methods for set cardinalit
 1. `pop`
 1. `discard`
 1. `clear`
+1. `intersection`
 
 # Operations on SetX
 1. `cardinality`
@@ -32,7 +33,6 @@ This is an extension of the set class with additional methods for set cardinalit
 1. `power_set`
 1. `complement`
 1. `iselement`
-1. `intersection`
 
 # Definitions of terms & operations on SetX
 1. **`Cardinality`** : This is the size (magnitude) of a set. It is the number of elements in the set. <br>
