@@ -122,4 +122,17 @@ class setx:
         return index
 
     def symmetric_difference(self, other):
-        pass
+        self.check_type(other)
+        other = set(other)
+
+        intersection = self.intersection(other)
+        symmetric_difference = set()
+
+        new_set = list(self.iterable) + list(other)
+        new_set = set(new_set)
+
+        for element in new_set:
+            if element not in intersection:
+                symmetric_difference.add(element)
+
+        return symmetric_difference
