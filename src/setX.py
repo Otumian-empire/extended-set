@@ -88,10 +88,6 @@ class setx:
 
         other = list(set(other))
         size_of_others = 0
-        # for element in self.iterable:
-        #     if element not in other:
-        #         return False
-        # return True
 
         for element in other:
             if element in self.iterable:
