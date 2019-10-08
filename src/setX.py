@@ -1,18 +1,27 @@
-class Setx:
+class setx:
 
-    def __init__(self, iterable, size):
-        self.size = size
+    def __init__(self, iterable=[]):
         self.iterable = set(iterable)
+        self.size = len(self.iterable)
 
     def __repr__(self):
-        return f"<{self.__class__.__name__.lower()!a}> {self.iterable}"
+        return f"<{self.__class__.__name__.lower() !a}> {self.iterable}"
 
     def add(self, element):
-        self.iterable.add(element)
-        self.size += 1
+        if element not in self.iterable:
+            self.iterable.add(element)
+            self.size += 1
+            print(element, self.iterable)
+
+    def add_s(self, elements):
+        temp = list(self.iterable)
+        temp.extend(elements)
+        self.iterable = set(temp)
+
+        self.size = len(self.iterable)
 
     def clear(self):
-        self.iterable = set()
+        self.iterable = setx()
         self.size = 0
 
     def pop(self):
@@ -22,19 +31,24 @@ class Setx:
         self.iterable.pop()
         self.size -= 1
 
-    def size(self):
+    def get_size(self):
         return self.size
 
-    def get(self):
+    def get_elements(self):
         return self.iterable
 
-    def new(self, iterable, size):
-        self.size = size
-        self.iterable = set(iterable)
+    def new(self, iterable=[]):
+        # self.iterable = setx(iterable)
+        self.iterable = iterable
+        s = setx(self.iterable)
+        self.size = s.get_size()
 
     def check_type(self, other):
-        if type(other) not in [list, set, dict]:
-            raise TypeError(f"{self.__name__ !a} requires an iterable")
+        if type(other) not in [list, set, dict, tuple, setx]:
+            raise TypeError(
+                f"{self.__class__.__name__ !a} requires an iterable")
+        # else:
+        #     return f"{type(other)!a}"
 
     def difference(self, other):
         self.check_type(other)
@@ -72,20 +86,27 @@ class Setx:
     def issubset(self, other):
         self.check_type(other)
 
+        other = list(set(other))
+        size_of_others = 0
+        # for element in self.iterable:
+        #     if element not in other:
+        #         return False
+        # return True
+
+        for element in other:
+            if element in self.iterable:
+                size_of_others += 1
+
+        if size_of_others == len(other):
+            return True
+        return False
+
+    def issuperset(self, other):
+        self.check_type(other)
         other = set(other)
 
         for element in self.iterable:
             if element not in other:
-                return False
-        return True
-
-    def issuperset(self, other):
-        self.check_type(other)
-
-        other = set(other)
-
-        for element in other:
-            if element not in self.iterable:
                 return False
         return True
 
@@ -100,5 +121,9 @@ class Setx:
         del temp[index]
 
         self.iterable = set(temp)
+        self.size = len(self.iterable)
 
         return index
+
+    def symmetric_difference(self, other):
+        pass
