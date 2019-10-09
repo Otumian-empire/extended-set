@@ -154,21 +154,33 @@ class setx:
 
         return cartesian_product, size_cartesian_product
 
-    def power_set(self):
-        pass
-        # Let A be a finite set, n = |A | and P(A) be the power set of A
-        # P(A) = {X: X is a subset of A}, | P(A) | = 2 ** |A | = 2 ** n
-        #
-        # From the above there'd be n inserts
-        # P(A) may have {{}, {{X}: X in A}, ..., {{x1, x2, x3, ..., xn}: x in A}}
-        # then we'd fill up the ' ... '
-        #
-        # if n > 2
-        # there is no repetition as such {x1, x2} is the same as {x2, x1} and so on
-        # we could make use of 3 sets, A, tempA and tempB (where tempA and tempB
-        # are temporary variables)
-        # have two loops
-        # 1 - loop(0, n - 2)
-        # 2 - loop(0, n - 1)
-        # take from tempA, add from A to from tempB
-        # add tempB to the power set and make tempA tempB
+    def addtoAll(self, e, setobj):
+        for c in setobj:
+            c.append(e)
+        return setobj
+
+    def power_set(self, temp):
+        """ https://stackoverflow.com/a/58108857/10051170 """
+
+        if len(temp) == 0:
+            return [[]]
+        return self.addtoAll(temp[0], self.power_set(temp[1:])) + self.power_set(temp[1:])
+
+    
+            # pass
+            # Let A be a finite set, n = |A | and P(A) be the power set of A
+            # P(A) = {X: X is a subset of A}, | P(A) | = 2 ** |A | = 2 ** n
+            #
+            # From the above there'd be n inserts
+            # P(A) may have {{}, {{X}: X in A}, ..., {{x1, x2, x3, ..., xn}: x in A}}
+            # then we'd fill up the ' ... '
+            #
+            # if n > 2
+            # there is no repetition as such {x1, x2} is the same as {x2, x1} and so on
+            # we could make use of 3 sets, A, tempA and tempB (where tempA and tempB
+            # are temporary variables)
+            # have two loops
+            # 1 - loop(0, n - 2)
+            # 2 - loop(0, n - 1)
+            # take from tempA, add from A to from tempB
+            # add tempB to the power set and make tempA tempB
