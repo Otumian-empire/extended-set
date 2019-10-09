@@ -136,3 +136,20 @@ class setx:
                 symmetric_difference.add(element)
 
         return symmetric_difference
+
+    def cartesian_product(self, other):
+        # A x B = {(a, b)| a in A, b in B}
+        # |A x B| = |A| x |B| for A, B which are finite
+
+        self.check_type(other)
+        other = set(other)
+
+        size_cartesian_product = self.get_size() * len(other)
+
+        cartesian_product = set()
+
+        for a in self.iterable:
+            for b in other:
+                cartesian_product.add((a, b))
+
+        return cartesian_product, size_cartesian_product
