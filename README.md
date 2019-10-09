@@ -60,7 +60,7 @@ This is an extension of the set class with additional methods for set cardinalit
     ```
 
 # Know that
-1. The sweet terms are all from Mr. Richard Hammack
+1. The sweet terms are all from Mr. Richard Hammack book, book of proof
 1. I will use informal language to express certain points
 1. `cardinality` is the same as `len`(`set`)
 1. `isempty` checks if `{}`
